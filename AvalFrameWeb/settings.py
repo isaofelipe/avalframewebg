@@ -83,8 +83,8 @@ DATABASES = {
         'NAME': 'avalframeweb',
         'USER': 'root',
         'PASSWORD': '1234',
-        'HOST': '127.0.0.1',
-        'PORT': '3306'
+        'HOST': '35.198.27.251',
+        'PORT': '5432'
     },
 }
 
