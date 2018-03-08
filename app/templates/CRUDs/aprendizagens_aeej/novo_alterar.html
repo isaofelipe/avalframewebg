@@ -1,0 +1,81 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+    
+<h1>Aprendizagens x AEEJ</h1>
+
+<form action="" method="post">
+    {% csrf_token %}
+    
+    {% if form.non_field_errors %}
+    <div class="panel panel-danger">
+        <div class="panel-body">
+            {% for erro in form.non_field_errors %}
+                {{erro}}
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    
+
+    {% if item %}
+    <div class="form-group">
+        <label for="codigo">Código: </label>
+        <input type="text" id="codigo" name="codigo" class="form-control" value="{{item.codigo}}" disabled/>
+        <span class="help-block">{{form.errors.codigo.0}}</span>
+    </div>
+    {% endif %}
+    <div class="form-group">
+        <label for="codigo_aprendizagem">Código da Aprendizagem: </label>
+        {{ form.codigo_aprendizagem }}
+        <span class="help-block">{{form.errors.codigo_aprendizagem.0}}</span>
+    </div>
+    <div class="form-group">
+        <label for="codigo_jogo">Código Do Jogo: </label>
+        {{form.codigo_jogo}}
+        <span class="help-block">{{form.errors.codigo_jogo.0}}</span>
+    </div>
+    <div class="form-group">
+        <label for="nivel_jogo">Nível Do Jogo: </label>
+        {{form.nivel_jogo}}
+        <span class="help-block">{{form.errors.nivel_jogo.0}}</span>
+    </div>
+    <div class="form-group">
+        <label for="fase_jogo">Fase Do Jogo: </label>
+        {{form.fase_jogo}}
+        <span class="help-block">{{form.errors.fase_jogo.0}}</span>
+    </div>
+    <div class="form-group">
+        <label for="etapa_jogo">Etapa Do Jogo: </label>
+        {{form.etapa_jogo}}
+        <span class="help-block">{{form.errors.etapa_jogo.0}}</span>
+    </div>
+    <div class="form-group">
+        <label for="codigo_aeej">Código AEEJ: </label>
+        {{form.codigo_aeej}}
+        <span class="help-block">{{form.errors.codigo_aeej.0}}</span>
+    </div>
+    <div class="form-group">
+        <label for="tipo_operacao">Tipo da Operação: </label>
+        {{form.tipo_operacao}}
+        <span class="help-block">{{form.errors.tipo_operacao.0}}</span>
+    </div>
+    <div class="form-group">
+        <label for="descritor_operacao">Descritor da Operação: </label>
+        {{form.descritor_operacao}}
+        <span class="help-block">{{form.errors.descritor_operacao.0}}</span>
+    </div>
+    <div class="form-group">
+        <label for="valor_padrao">Valor Padrão: </label>
+        {{form.valor_padrao}}
+        <span class="help-block">{{form.errors.valor_padrao.0}}</span>
+    </div>
+    <div class="form-group">
+        <label for="contribuicao_do_aeej_na_aprendizagem">Contribuição AEEJ na Aprendizagem: </label>
+        {{form.contribuicao_do_aeej_na_aprendizagem}}
+        <span class="help-block">{{form.errors.contribuicao_do_aeej_na_aprendizagem.0}}</span>
+    </div>
+    <button type="submit" class="btn btn-success">Cadastrar</button>
+</form>
+
+{% endblock %}

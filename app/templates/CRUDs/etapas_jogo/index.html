@@ -1,0 +1,57 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+    
+<h1>Etapa de Jogos Digitais</h1>
+<p style="text-align: left"><a class="btn btn-primary" href="{% url 'etapas_jogo_novo' %}">Cadastrar Nova Etapa</a></p>
+<table class="table table-bordered" id="datatable" cellspacing="0" width="100%">
+    <thead>
+    <tr>
+        <th>
+            Etapa
+        </th>
+        <th>
+            Título
+        </th>
+        <th>
+            Jogo
+        </th>
+        <th>
+            Nível
+        </th>
+        <th>
+            Fase
+        </th>
+        <th>
+            Ações
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in etapas_jogo %}
+    <tr>
+        <td>
+            {{item.etapa}}
+        </td>
+        <td>
+            {{item.titulo}}
+        </td>
+        <td>
+            {{item.codigo_jogo}}
+        </td>
+        <td>
+            {{item.codigo_nivel.nivel}}
+        </td>
+        <td>
+            {{item.codigo_fase.fase}}
+        </td>
+        <td>
+            <a class="btn btn-warning" href="{% url 'etapas_jogo_alterar' codigo=item.codigo %}">Alterar</a>
+            <a class="btn btn-danger" href="{% url 'etapas_jogo_deletar' codigo=item.codigo %}">Deletar</a>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

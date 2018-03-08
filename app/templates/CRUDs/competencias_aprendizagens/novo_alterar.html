@@ -1,0 +1,45 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+    
+<h1>Competências x Aprendizagens</h1>
+
+<form action="" method="post">
+    {% csrf_token %}
+    
+    {% if form.non_field_errors %}
+    <div class="panel panel-danger">
+        <div class="panel-body">
+            {% for erro in form.non_field_errors %}
+                {{erro}}
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    {% if item %}
+    <div class="form-group">
+        <label for="codigo">Código: </label>
+        <input type="text" id="codigo" name="codigo" class="form-control" value="{{item.codigo}}" disabled/>
+        <span class="help-block">{{form.errors.codigo.0}}</span>
+    </div>
+    {% endif %}
+    <div class="form-group">
+        <label for="codigo_competencia">Código da Competência: </label>
+        {{form.codigo_competencia}}
+        <span class="help-block">{{form.errors.codigo_competencia.0}}</span>
+    </div>
+    <div class="form-group">
+        <label for="codigo_aprendizagem">Código da Aprendizagem: </label>
+        {{form.codigo_aprendizagem}}
+        <span class="help-block">{{form.errors.codigo_aprendizagem.0}}</span>
+    </div>
+    <div class="form-group">
+        <label for="contribuicao_da_aprendizagem_na_competencia">Contribuicao da Aprendizagem na Competencia: </label>
+        <input type="text" id="contribuicao_da_aprendizagem_na_competencia" name="contribuicao_da_aprendizagem_na_competencia" class="form-control" value="{{item.contribuicao_da_aprendizagem_na_competencia}}"/>
+        <span class="help-block">{{form.errors.contribuicao_da_aprendizagem_na_competencia.0}}</span>
+    </div>
+    <button type="submit" class="btn btn-success">Cadastrar</button>
+</form>
+
+{% endblock %}

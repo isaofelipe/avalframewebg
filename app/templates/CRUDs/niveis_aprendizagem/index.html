@@ -1,0 +1,61 @@
+﻿{% extends "app/layout.html" %}
+{% load tags %}
+
+{% block content %}
+    
+<h1>Níveis de Aprendizagem</h1>
+<p style="text-align: left"><a class="btn btn-primary" href="{% url 'niveis_aprendizagem_novo' %}">Cadastrar Novo Nível de Aprendizagem</a></p>
+<table class="table table-bordered" id="datatable" cellspacing="0" width="100%">
+    <thead>
+    <tr>
+        <th>
+            Nível
+        </th>
+        <th>
+            Código da Aprendizagem
+        </th>
+        <th>
+            Título
+        </th>
+        <th>
+            Percentual Inicio
+        </th>
+        <th>
+            Percentual fim
+        </th>
+        <th>
+            Percentual de Jogadores
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in niveis_aprendizagem %}
+    <tr>
+        <td>
+            {{item.nivel}}
+        </td>
+        <td>
+            {{item.codigo_aprendizagem.codigo}}
+        </td>
+        <td>
+            {{item.titulo}}
+        </td>
+        <td>
+            {%porcentagem item.inicio_nivel%}
+        </td>
+        <td>
+            {%porcentagem item.fim_nivel%}
+        </td>
+        <td>
+            {%porcentagem item.jogadores_nesse_nivel%}
+        </td>
+        <td>
+            <a class="btn btn-warning" href="{% url 'niveis_aprendizagem_alterar' codigo=item.codigo %}">Alterar</a>
+            <a class="btn btn-danger" href="{% url 'niveis_aprendizagem_deletar' codigo=item.codigo %}">Deletar</a>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

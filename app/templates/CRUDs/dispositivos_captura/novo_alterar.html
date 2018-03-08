@@ -1,0 +1,36 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+    
+<h1>Dispositivos de Captura de Dados Multimodais</h1>
+
+<form action="" method="post">
+    {% csrf_token %}
+    
+    {% if form.non_field_errors %}
+    <div class="panel panel-danger">
+        <div class="panel-body">
+            {% for erro in form.non_field_errors %}
+                {{erro}}
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    
+
+    {% if item %}
+    <div class="form-group">
+        <label for="codigo">Código: </label>
+        <input type="text" id="codigo" name="codigo" class="form-control" value="{{item.codigo}}" disabled/>
+        <span class="help-block">{{form.errors.codigo.0}}</span>
+    </div>
+    {% endif %}
+    <div class="form-group">
+        <label for="nome">Nome: </label>
+        <input id="nome" type="text" name="nome" class="form-control" value="{{item.nome}}"/>
+        <span class="help-block">{{form.errors.nome.0}}</span>
+    </div>
+    <button type="submit" class="btn btn-success">Cadastrar</button>
+</form>
+
+{% endblock %}

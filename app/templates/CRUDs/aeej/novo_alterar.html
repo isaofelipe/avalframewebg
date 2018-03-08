@@ -1,0 +1,50 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+    
+<h1>AEEJ</h1>
+
+<form action="" method="post">
+    {% csrf_token %}
+    
+    {% if form.non_field_errors %}
+    <div class="panel panel-danger">
+        <div class="panel-body">
+            {% for erro in form.non_field_errors %}
+                {{erro}}
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    
+
+    {%if item %}
+        <div class="form-group">
+            <label for="codigo">Código: </label>
+            <input type="text" id="codigo" name="codigo" class="form-control" value="{{item.codigo}}" disabled/>
+        </div>
+    {% endif %}
+    <div class="form-group">
+        <label for="codigo_dispositivo">Código do Dispositivo: </label>
+        {{form.codigo_dispositivo}}
+        <span class="help-block">{{form.errors.codigo_dispositivo.0}}</span>
+    </div>
+    <div class="form-group">
+        <label for="tipo">Tipo: </label>
+        <select id="tipo" name="tipo" class="form-control" value="{{item.tipo}}">
+            <option selected disabled>Selecione uma opção</option>
+            <option>E</option>
+            <option>T</option>
+            <option>A</option>
+        </select>
+        <span class="help-block">{{form.errors.tipo.0}}</span>
+    </div>
+    <div class="form-group">
+        <label for="descricao">Descrição: </label>
+        <input id="descricao" type="text" name="descricao" class="form-control" value="{{item.descricao}}"/>
+        <span class="help-block">{{form.errors.titulo.0}}</span>
+    </div>
+    <button type="submit" class="btn btn-success">Cadastrar</button>
+</form>
+
+{% endblock %}

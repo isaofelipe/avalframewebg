@@ -1,0 +1,60 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+    
+<h1>Níveis de Aprendizagem</h1>
+
+<form action="" method="post">
+    {% csrf_token %}
+    
+    {% if form.non_field_errors %}
+    <div class="panel panel-danger">
+        <div class="panel-body">
+            {% for erro in form.non_field_errors %}
+                {{erro}}
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    
+    {% if item %}
+    <div class="form-group">
+        <label for="codigo">Código: </label>
+        <input type="text" id="codigo" name="codigo" class="form-control" value="{{item.codigo}}" disabled/>
+        <span class="help-block">{{form.errors.codigo.0}}</span>
+    </div>
+    {% endif %}
+    <div class="form-group">
+        <label for="nivel">Nível: </label>
+        <input id="nivel" type="text" name="nivel" class="form-control" value="{{item.nivel}}"/>
+        <span class="help-block">{{form.errors.nivel.0}}</span>
+    </div>
+    <div class="form-group">
+        <label for="codigo_aprendizagem">Código da Aprendizagem: </label>
+        {{form.codigo_aprendizagem}}
+        <span class="help-block">{{form.errors.codigo_aprendizagem.0}}</span>
+    </div>
+    <div class="form-group">
+        <label for="titulo">Título: </label>
+        <input id="titulo" type="text" name="titulo" class="form-control" value="{{item.titulo}}"/>
+        <span class="help-block">{{form.errors.titulo.0}}</span>
+    </div>
+    <div class="form-group">
+        <label for="inicio_nivel">Percentual do Valor Máximo da Aprendizagem que indica o inicio do Nível: </label>
+        <input type="text" id="inicio_nivel" name="inicio_nivel" class="form-control" value="{{item.inicio_nivel}}"/>
+        <span class="help-block">{{form.errors.inicio_nivel.0}}</span>
+    </div>
+    <div class="form-group">
+        <label for="fim_nivel">Percentual do Valor Máximo da Aprendizagem  que Indica o fim do Nível: </label>
+        <input id="fim_nivel" type="text" name="fim_nivel" class="form-control" value="{{item.fim_nivel}}"/>
+        <span class="help-block">{{form.errors.fim_nivel.0}}</span>
+    </div>
+    <div class="form-group">
+        <label for="titulo">Percentual de Jogadores nesse nível de Aprendizagem: </label>
+        <input id="jogadores_nesse_nivel" type="text" name="jogadores_nesse_nivel" class="form-control" value="{{item.jogadores_nesse_nivel}}"/>
+        <span class="help-block">{{form.errors.jogadores_nesse_nivel.0}}</span>
+    </div>
+    <button type="submit" class="btn btn-success">Cadastrar</button>
+</form>
+
+{% endblock %}

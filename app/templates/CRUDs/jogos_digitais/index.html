@@ -1,0 +1,39 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+    
+<h1>Jogos Digitais</h1>
+<p style="text-align: left"><a class="btn btn-primary" href="{% url 'jogos_digitais_novo' %}">Cadastrar Novo Jogo Digital</a></p>
+<table class="table table-bordered" id="datatable" cellspacing="0" width="100%">
+    <thead>
+    <tr>
+        <th>
+            Código
+        </th>
+        <th>
+            Título
+        </th>
+        <th>
+            Ações
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in jogos_digitais %}
+    <tr>
+        <td>
+            {{item.codigo}}
+        </td>
+        <td>
+            {{item.titulo}}
+        </td>
+        <td>
+            <a class="btn btn-warning" href="{% url 'jogos_digitais_alterar' codigo=item.codigo %}">Alterar</a>
+            <a class="btn btn-danger" href="{% url 'jogos_digitais_deletar' codigo=item.codigo %}">Deletar</a>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

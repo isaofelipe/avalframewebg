@@ -1,0 +1,44 @@
+.{% extends "app/layout.html" %}
+
+{% block content %}
+    
+<h1>Níveis do Jogo Digital</h1>
+
+<form action="" method="post">
+    {% csrf_token %}
+    
+    {% if form.non_field_errors %}
+    <div class="panel panel-danger">
+        <div class="panel-body">
+            {% for erro in form.non_field_errors %}
+                {{erro}}
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    
+    {%if item %}
+        <div class="form-group">
+            <label for="codigo">Código: </label>
+            <input type="text" id="codigo" name="codigo" class="form-control" value="{{item.codigo}}" disabled/>
+        </div>
+    {% endif %}
+    <div class="form-group">
+        <label for="nivel">Número do nível: </label>
+        {{form.nivel}}
+        <span class="help-block">{{form.errors.nivel.0}}</span>
+    </div>
+    <div class="form-group">
+        <label for="codigo">Código do Jogo: </label>
+        {{form.codigo_jogo}}
+        <span class="help-block">{{form.errors.codigo_jogo.0}}</span>
+    </div>
+    <div class="form-group">
+        <label for="titulo">Título: </label>
+        {{form.titulo}}
+        <span class="help-block">{{form.errors.titulo.0}}</span>
+    </div>
+    <button type="submit" class="btn btn-success">Cadastrar</button>
+</form>
+
+{% endblock %}

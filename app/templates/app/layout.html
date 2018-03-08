@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html charset="utf-8">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AvalFrame Web </title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'app/scripts/datatables.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/bootstrap.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/site.css' %}" />
+    <script src="{% static 'app/scripts/modernizr-2.6.2.js' %}"></script>
+</head>
+
+<body>
+   <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="/" class="navbar-brand">AvalFrame</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Projeto ECD-A<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="">Guia ECD-A</a></li>
+                            <li><a href="">Link Astah</a></li>
+                            <li><a href="">Link Draw.io</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Bases Avaliação<span class="caret"></span></a>
+                      <ul class="dropdown-menu" role="menu">
+                      
+                        <li><a href="{% url 'aprendizagens_index' %}">Aprendizagens</a></li>
+                        <li><a href="{% url 'niveis_aprendizagem_index' %}">Níveis de Aprendizagem</a></li>
+                        <li><a href="{% url 'aprendizagens_aeej_index' %}">Aprendizagem X AEEJ</a></li>
+                        <li><a href="{% url 'competencias_index' %}">Competência</a></li>
+                        <li><a href="{% url 'niveis_competencia_avaliacao_index' %}">Níveis de Competência</a></li>
+                        <li><a href="{% url 'competencias_aprendizagens_index' %}">Competência X Aprendizagem</a></li>
+                    
+                        <li class="divider"></li>
+                        <li><a href="{% url 'jogadores_index' %}">Jogadores</a></li>
+                        <li><a href="{% url 'jogos_digitais_index' %}">Jogos Digitais</a></li>
+                        <li><a href="{% url 'niveis_jogo_index' %}">Níveis de Jogos Digitais</a></li>
+                        <li><a href="{% url 'fases_jogo_index' %}">Fases dos Níveis de Jogos Digitais</a></li>
+                        <li><a href="{% url 'etapas_jogo_index' %}">Etapas dos Níveis de Jogos Digitais</a></li>
+                        <li><a href="{% url 'aeej_index' %}">Ações, Eventos, Estados do Jogo (AEEJ)</a></li>
+                    
+                        <li class="divider">Captura de Dados</li>
+                        <li><a href="{% url 'dispositivos_captura_index' %}">Dispositivos de Captura de Dados Multimodais</a></li>
+
+                      </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Agentes<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="">Log AEEJ</a></li>
+                            <li><a href="">Captura Imagens</a></li>
+                            <li><a href="">Movimentação dos Olhos</a></li>
+                            <li><a href="">Codifica Imagem</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tratamento Dados<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="{% url 'carga_aprendizagens_index' %}">Apuração Aprendizagens</a></li>
+                            <li><a href="">Identificação Imagem</a></li>
+                            <li><a href="">Tratamento Dados Movimentação dos Olhos</a></li>
+                            <li><a href="">Geração Base Histórica</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="{% url 'geracao_relatorio_index' %}">Relatórios e Gráficos</a></li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mineração de dados<span class="caret"></span></a>
+                      <ul class="dropdown-menu" role="menu">
+                      
+                        <li><a href="https://www.dropbox.com/s/yx2omg0toa5abwu/Cluster.exe?dl=0#">Gráfico de Clusters</a></li>
+                        <li><a href="https://www.dropbox.com/s/p2fgom4zsbvzjuo/cluster.zip?dl=0">Geração do Classificador</a></li>
+
+                      </ul>
+                    </li>
+                    <li><a href="">Games</a></li>
+                </ul>
+                {% include 'app/loginpartial.html' %}
+            </div>
+        </div>
+       </nav>
+     <div class="container body-content">
+        {% block content %}{% endblock %}
+        <hr/>
+        
+    </div>
+    <footer>
+           &copy; {{ year }} - AvalFrame Web
+    </footer>
+    <script src="{% static 'app/scripts/jquery-1.10.2.js' %}"></script>
+    <script src="{% static 'app/scripts/bootstrap.js' %}"></script>
+    <script src="{% static 'app/scripts/respond.js' %}"></script>
+    <script src="{% static 'app/scripts/datatables.min.js' %}"></script>
+    <script src="{% static 'app/scripts/site_scripts.js' %}"></script>
+
+{% block scripts %}{% endblock %}
+
+</body>
+</html>

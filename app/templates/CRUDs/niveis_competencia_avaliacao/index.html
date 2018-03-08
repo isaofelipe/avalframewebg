@@ -1,0 +1,66 @@
+﻿{% extends "app/layout.html" %}
+{% load tags %}
+{% block content %}
+    
+<h1>Níveis de Competência Avaliação</h1>
+<p style="text-align: left"><a class="btn btn-primary" href="{% url 'niveis_competencia_avaliacao_novo' %}">Cadastrar Novo Nível de Competência</a></p>
+<div class="responsive">
+    <table class="table table-bordered" id="datatable" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>
+                Código
+            </th>
+            <th>
+                Código Competência
+            </th>
+            <th>
+                Título
+            </th>
+            <th>
+                Percentual do Valor Máximo da Competencia que indica o inicio do Nivel
+            </th>
+            <th>
+                Percentual do Valor Máximo da Competencia que Indica o fim do Nível
+            </th>
+            <th>
+                Percentual de Jogadores nesse nível de Competencia
+            </th>
+            <th>
+                Ações
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for nivel in niveis_competencia_avaliacao %}
+        <tr>
+            <td>
+                {{nivel.codigo}}
+            </td>
+            <td>
+                {{nivel.codigo_competencia.codigo}}
+            </td>
+            <td>
+                {{nivel.titulo}}
+            </td>
+            <td>
+                {% porcentagem nivel.inicio_nivel %}
+            </td>
+            <td>
+                {% porcentagem nivel.fim_nivel %}
+            </td>
+            <td>
+                {% porcentagem nivel.jogadores_nesse_nivel %}
+            </td>
+            <td>
+                <a class="btn btn-warning" href="{% url 'niveis_competencia_avaliacao_alterar' codigo=nivel.codigo %}">Alterar</a>
+                <a class="btn btn-danger" href="{% url 'niveis_competencia_avaliacao_deletar' codigo=nivel.codigo %}">Deletar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+</div>
+
+
+{% endblock %}

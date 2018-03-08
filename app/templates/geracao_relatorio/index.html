@@ -1,0 +1,26 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+<h1>Geração de Relatório</h1>
+
+<form>
+    <div class="form-group">
+        <label for="sel1">Selecione o Relatório:</label>
+        <select class="form-control" id="sel1">
+            <option hidden>Selecione</option>
+            <option value="A">Relatório Aprendizagens</option>
+            <option value="C">Relatório Competências</option>
+        </select>
+    </div>
+</form>
+
+
+<div id="relatorioAprendizagens" hidden>
+    {% include "geracao_relatorio/aprendizagens.html" %}
+</div>
+
+<div id="relatorioCompetencias" hidden>
+    {% include "geracao_relatorio/competencias.html" %}
+</div>
+
+{% endblock %}

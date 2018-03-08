@@ -1,0 +1,45 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+    
+<h1>Competências</h1>
+<p style="text-align: left"><a class="btn btn-primary" href="{% url 'competencias_novo' %}">Cadastrar Nova Competência</a></p>
+<table class="table table-bordered" id="datatable" cellspacing="0" width="100%">
+    <thead>
+    <tr>
+        <th>
+            Código
+        </th>
+        <th>
+            Título
+        </th>
+        <th>
+            Valor máximo de pontos
+        </th>
+        <th>
+            Ações
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for competencia in competencias %}
+    <tr>
+        <td>
+            {{competencia.codigo}}
+        </td>
+        <td>
+            {{competencia.titulo}}
+        </td>
+        <td>
+            {{competencia.valor_maximo_pontos}}
+        </td>
+        <td>
+            <a class="btn btn-warning" href="{% url 'competencias_alterar' codigo=competencia.codigo %}">Alterar</a>
+            <a class="btn btn-danger" href="{% url 'competencias_deletar' codigo=competencia.codigo %}">Deletar</a>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

@@ -1,0 +1,14 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+    
+<h1>Jogadores</h1>
+
+<p>Confirma a exclusão?</p>
+<form action="" method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-success">Confirmar</button>
+    <a class="btn btn-danger" href="{% url 'jogadores_index' %}">Voltar</a>
+</form>
+
+{% endblock %}

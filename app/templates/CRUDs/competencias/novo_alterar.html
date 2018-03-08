@@ -1,0 +1,41 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+    
+<h1>Competencias</h1>
+
+<form action="" method="post">
+    {% csrf_token %}
+    
+    {% if form.non_field_errors %}
+    <div class="panel panel-danger">
+        <div class="panel-body">
+            {% for erro in form.non_field_errors %}
+                {{erro}}
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    
+
+    {% if competencia.codigo %}
+    <div class="form-group">
+        <label for="codigo">Código: </label>
+        <input type="text" id="codigo" name="codigo" class="form-control" value="{{competencia.codigo}}" disabled/>
+        <span class="help-block">{{form.errors.codigo.0}}</span>
+    </div>
+    {% endif %}
+    <div class="form-group">
+        <label for="titulo">Título: </label>
+        <input id="titulo" type="text" name="titulo" class="form-control" value="{{competencia.titulo}}"/>
+        <span class="help-block">{{form.errors.titulo.0}}</span>
+    </div>
+    <div class="form-group">
+        <label for="valor_maximo_pontos">Valor máximo de pontos:</label>
+        <input id="valor_maximo_pontos" type="text" name="valor_maximo_pontos" class="form-control" value="{{competencia.valor_maximo_pontos}}"/>
+        <span class="help-block">{{form.errors.valor_maximo_pontos.0}}</span>
+    </div>
+    <button type="submit" class="btn btn-success">Cadastrar</button>
+</form>
+
+{% endblock %}

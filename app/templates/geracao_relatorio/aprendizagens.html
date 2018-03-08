@@ -1,0 +1,48 @@
+<table class="table table-bordered datatable" id="datatable" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>
+                Aluno
+            </th>
+            <th>
+                Data Jogo
+            </th>
+            <th>
+                Hora Jogo
+            </th>
+            <th>
+                Aprendizagem
+            </th>
+            <th>
+                Pontuação
+            </th>
+            <th>
+                Nível da Aprendizagem
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in itensRelatorioAprendizagens %}
+            <tr>
+                <td>
+                    {{item.nome_jogador}}
+                </td>
+                <td>
+                    {{item.data_inicio_jogo}}
+                </td>
+                <td>
+                     {{item.hora_inicio_jogo}}
+                </td>
+                <td>
+                    {{item.titulo_aprendizagem}}
+                </td>
+                <td>
+                     {{item.valor_aprendizagem}}
+                </td>
+                <td>
+                    {{item.titulo_nivel_aprendizagem}}
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

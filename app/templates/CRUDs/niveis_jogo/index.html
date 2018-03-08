@@ -1,0 +1,45 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+    
+<h1>Níveis do Jogo Digital</h1>
+<p style="text-align: left"><a class="btn btn-primary" href="{% url 'niveis_jogo_novo' %}">Cadastrar Novo Nível</a></p>
+<table class="table table-bordered" id="datatable" cellspacing="0" width="100%">
+    <thead>
+    <tr>
+        <th>
+            Nível
+        </th>
+        <th>
+            Jogo
+        </th>
+        <th>
+            Título
+        </th>
+        <th>
+            Ações
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in niveis_jogo %}
+    <tr>
+        <td>
+            {{item.nivel}}
+        </td>
+        <td>
+            {{item.codigo_jogo}}
+        </td>
+        <td>
+            {{item.titulo}}
+        </td>
+        <td>
+            <a class="btn btn-warning" href="{% url 'niveis_jogo_alterar' codigo=item.codigo %}">Alterar</a>
+            <a class="btn btn-danger" href="{% url 'niveis_jogo_deletar' codigo=item.codigo %}">Deletar</a>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

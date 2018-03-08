@@ -1,0 +1,51 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+    
+<h1>Aprendizagens</h1>
+
+<form action="" method="post">
+    {% csrf_token %}
+    
+    {% if form.non_field_errors %}
+    <div class="panel panel-danger">
+        <div class="panel-body">
+            {% for erro in form.non_field_errors %}
+                {{erro}}
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    
+
+    {% if aprendizagem %}
+    <div class="form-group">
+        <label for="codigo">Código: </label>
+        <input type="text" id="codigo" name="codigo" class="form-control" value="{{aprendizagem.codigo}}"  disabled/> 
+        <span class="help-block">{{form.errors.codigo.0}}</span>
+    </div>
+    {% endif %}
+    <div class="form-group">
+        <label for="tipo">Tipo: </label>
+        <select class="form-control" id="tipo" name="tipo" value="{{aprendizagem.tipo}}">
+            <option selected disabled>Selecione o tipo</option>
+            <option>A</option>
+            <option>C</option>
+            <option>H</option>
+        </select>
+        <span class="help-block">{{form.errors.tipo.0}}</span>
+    </div>
+    <div class="form-group">
+        <label for="titulo">Título: </label>
+        <input id="titulo" type="text" name="titulo" class="form-control" value="{{aprendizagem.titulo}}"/>
+        <span class="help-block">{{form.errors.titulo.0}}</span>
+    </div>
+    <div class="form-group">
+        <label for="valor_maximo">Valor máximo: </label>
+        <input type="text" id="valor_maximo" name="valor_maximo" class="form-control" value="{{aprendizagem.valor_maximo}}"/> 
+        <span class="help-block">{{form.errors.valor_maximo.0}}</span>
+    </div>
+    <button type="submit" class="btn btn-success">Cadastrar</button>
+</form>
+
+{% endblock %}

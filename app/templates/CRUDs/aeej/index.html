@@ -1,0 +1,46 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+    
+<h1>Ações, Eventos, Estados do Jogo - AEEJ</h1>
+<p style="text-align: left"><a class="btn btn-primary" href="{% url 'aeej_novo' %}">Cadastrar Nova AEEJ</a></p>
+<table class="table table-bordered" id="datatable" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>
+                Código do Dispositivo de captura
+            </th>
+            <th>
+                Tipo
+            </th>
+            <th>
+                Descrição
+            </th>
+            <th>
+                Ações
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in aeej %}
+        <tr>
+            <td>
+                {{item.codigo_dispositivo.codigo}}
+            </td>
+            <td>
+                {{item.tipo}}
+            </td>
+            <td>
+                {{item.descricao}}
+            </td>
+            <td>
+                <a class="btn btn-warning" href="{% url 'aeej_alterar' codigo=item.codigo %}">Alterar</a>
+                <a class="btn btn-danger" href="{% url 'aeej_deletar' codigo=item.codigo %}">Deletar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock %}

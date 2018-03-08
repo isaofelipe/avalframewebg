@@ -1,0 +1,56 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+    
+<h1>Etapa de Jogos Digitais</h1>
+
+<form action="" method="post">
+    {% csrf_token %}
+    
+    {% if form.non_field_errors %}
+    <div class="panel panel-danger">
+        <div class="panel-body">
+            {% for erro in form.non_field_errors %}
+                {{erro}}
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    
+    {% if item %}
+    <div class="form-group">
+        <label for="codigo">Código: </label>
+        {{form.codigo}}
+        <span class="help-block">{{form.errors.codigo.0}}</span>
+    </div>
+    {% endif %}
+    <div class="form-group">
+        <label for="etapa">Etapa: </label>
+        {{form.etapa}}
+        <span class="help-block">{{form.errors.etapa.0}}</span>
+    </div>
+    <div class="form-group">
+        <label for="titulo">Título: </label>
+        {{form.titulo}}
+        <span class="help-block">{{form.errors.titulo.0}}</span>
+    </div>
+    <div class="form-group">
+        <label for="codigo_jogo">Código do Jogo: </label>
+        {{form.codigo_jogo}}
+        <span class="help-block">{{form.errors.codigo_jogo.0}}</span>
+    </div>
+    <div class="form-group">
+        <label for="codigo_nivel">Nível: </label>
+        {{form.codigo_nivel}}
+        <span class="help-block">{{form.errors.codigo_nivel.0}}</span>
+    </div>
+    <div class="form-group">
+        <label for="codigo_fase">Fase: </label>
+        {{form.codigo_fase}}
+        <span class="help-block">{{form.errors.codigo_fase.0}}</span>
+    </div>
+    
+    <button type="submit" class="btn btn-success">Cadastrar</button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+<table class="table table-bordered datatable" id="datatable" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>
+                Aluno
+            </th>
+            <th>
+                Competência
+            </th>
+            <th>
+                Nível
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in itensRelatorioCompetencias %}
+            <tr>
+                <td>
+                    {{item.nome}}
+                </td>
+                <td>
+                    {{item.competencia}}
+                </td>
+                <td>
+                    {{item.nivel}}
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

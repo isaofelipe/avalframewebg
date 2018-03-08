@@ -1,0 +1,51 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+    
+<h1>Fase de Jogos Digitais</h1>
+<p style="text-align: left"><a class="btn btn-primary" href="{% url 'fases_jogo_novo' %}">Cadastrar Nova Fase</a></p>
+<table class="table table-bordered" id="datatable" cellspacing="0" width="100%">
+    <thead>
+    <tr>
+        <th>
+            Fase
+        </th>
+        <th>
+            Título
+        </th>
+        <th>
+            Jogo
+        </th>
+        <th>
+            Nível
+        </th>
+        <th>
+            Ações
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in fases_jogo %}
+    <tr>
+        <td>
+            {{item.fase}}
+        </td>
+        <td>
+            {{item.titulo}}
+        </td>
+        <td>
+            {{item.codigo_jogo}}
+        </td>
+        <td>
+            {{item.codigo_nivel.nivel}}
+        </td>
+        <td>
+            <a class="btn btn-warning" href="{% url 'fases_jogo_alterar' codigo=item.codigo %}">Alterar</a>
+            <a class="btn btn-danger" href="{% url 'fases_jogo_deletar' codigo=item.codigo %}">Deletar</a>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

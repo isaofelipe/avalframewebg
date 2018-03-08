@@ -1,0 +1,75 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+    
+<h1>Jogadores</h1>
+<p style="text-align: left"><a class="btn btn-primary" href="{% url 'jogadores_novo' %}">Cadastrar Jogador</a></p>
+<table class="table table-bordered" id="datatable" cellspacing="0" width="100%">
+    <thead>
+    <tr>
+        <th>
+            Código
+        </th>
+        <th>
+            Nome
+        </th>
+        <th>
+            Sexo
+        </th>
+        <th>
+            Data de Nascimento
+        </th>
+        <th>
+            Data desde quando joga
+        </th>
+        <th>
+            Coeficiente de rendimento
+        </th>
+        <th>
+            Tipo de jogo preferido
+        </th>
+        <th>
+            Perfil de recomendação
+        </th>
+        <th>
+            Ações
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in jogadores %}
+    <tr>
+        <td>
+            {{item.codigo}}
+        </td>
+        <td>
+            {{item.nome}}
+        </td>
+        <td>
+            {{item.sexo}}
+        </td>
+        <td>
+            {{item.data_nascimento}}
+        </td>
+        <td>
+            {{item.data_desde_quando_joga}}
+        </td>
+        <td>
+            {{item.coeficiente_de_rendimento}}
+        </td>
+        <td>
+            {{item.tipo_jogo_preferido}}
+        </td>
+        <td>
+            {{item.perfil_recomendacao}}
+        </td>
+        <td>
+            <a class="btn btn-warning" href="{% url 'jogadores_alterar' codigo=item.codigo %}">Alterar</a>
+            <a class="btn btn-danger" href="{% url 'jogadores_deletar' codigo=item.codigo %}">Deletar</a>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

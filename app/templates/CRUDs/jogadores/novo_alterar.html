@@ -1,0 +1,74 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+    
+<h1>Jogadores</h1>
+
+<form action="" method="post">
+    {% csrf_token %}
+    
+    {% if form.non_field_errors %}
+    <div class="panel panel-danger">
+        <div class="panel-body">
+            {% for erro in form.non_field_errors %}
+                {{erro}}
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    
+
+    {% if item %}
+    <div class="form-group">
+        <label for="codigo">Código: </label>
+        <input type="text" id="codigo" name="codigo" class="form-control" value="{{item.codigo}}" disabled/>
+        <span class="help-block">{{form.errors.codigo.0}}</span>
+    </div>
+    {% endif %}
+    <div class="form-group">
+        <label for="nome">Nome: </label>
+        <input id="nome" type="text" name="nome" class="form-control" value="{{item.nome}}"/>
+        <span class="help-block">{{form.errors.nome.0}}</span>
+    </div>
+    <div class="form-group">
+        <label for="sexo">Sexo: </label>
+        <select class="form-control" id="sexo" name="sexo" value="item.sexo">
+            <option selected disabled>Selecione o Sexo</option>
+            <option>M</option>
+            <option>F</option>
+        </select>
+        <span class="help-block">{{form.errors.sexo.0}}</span>
+    </div>
+    <div class="form-group">
+        <label for="data_nascimento">Data de Nascimento: </label>
+        <input id="data_nascimento" type="date" name="data_nascimento" class="form-control" value="{{item.data_nascimento}}"/>
+        <span class="help-block">{{form.errors.data_nascimento.0}}</span>
+    </div>
+    <div class="form-group">
+        <label for="data_desde_quando_joga">Data desde quando joga: </label>
+        <input id="data_desde_quando_joga" type="date" name="data_desde_quando_joga" class="form-control" value="{{item.data_desde_quando_joga}}"/>
+        <span class="help-block">{{form.errors.data_desde_quando_joga.0}}</span>
+    </div>
+    <div class="form-group">
+        <label for="coeficiente_de_rendimento">Coeficiente de Rendimento: </label>
+        <input id="coeficiente_de_rendimento" type="text" name="coeficiente_de_rendimento" class="form-control" value="{{item.coeficiente_de_rendimento}}"/>
+        <span class="help-block">{{form.errors.coeficiente_de_rendimento.0}}</span>
+    </div>
+    <div class="form-group">
+        <label for="tipo_jogo_preferido">Tipo de Jogo Preferido: </label>
+        <input id="tipo_jogo_preferido" type="text" name="tipo_jogo_preferido" class="form-control" value="{{item.tipo_jogo_preferido}}"/>
+        <span class="help-block">{{form.errors.tipo_jogo_preferido.0}}</span>
+    </div>
+    <div class="form-group">
+        <label for="perfil_recomendacao">Perfil de recomendação inicial: </label>
+        <div class="input-group" style="max-width: 358px;">
+            <input id="perfil_recomendacao" type="text" name="perfil_recomendacao" class="form-control" value="{{item.perfil_recomendacao}}" style="width: 100%;">
+            <div class="input-group-btn"><button type="button" class="btn btn-info" id="gerar_perfil">Gerar Perfil</button></div>
+        </div>
+        <span class="help-block" id="perfil_recomendacao_help">{{form.errors.perfil_recomendacao.0}}</span>
+    </div>
+    <button type="submit" class="btn btn-success">Cadastrar</button>
+</form>
+
+
+{% endblock %}

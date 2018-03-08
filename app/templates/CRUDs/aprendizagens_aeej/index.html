@@ -1,0 +1,95 @@
+﻿{% extends "app/layout.html" %}
+{% load tags %}
+{% block content %}
+    
+<h1>Aprendizagens x AEEJ</h1>
+<p style="text-align: left"><a class="btn btn-primary" href="{% url 'aprendizagens_aeej_novo' %}">Cadastrar Novo Relacionamento</a></p>
+<div class="table-responsive">
+    <table class="table table-bordered" id="datatable" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>
+                Código
+            </th>
+            <th>
+                Código da Aprendizagem
+            </th>
+            <th>
+                Código do Jogo
+            </th>
+            <th>
+                Nível do Jogo
+            </th>
+            <th>
+                Fase do Jogo
+            </th>
+            <th>
+                Etapa do Jogo
+            </th>
+            <th>
+                Código AEEJ
+            </th>
+            <th>
+                Tipo da Operação
+            </th>
+            <th>
+                Descritor Operação
+            </th>
+            <th>
+                Valor Padrão
+            </th>
+            <th>
+                Contribuição do AEEJ na Aprendizagem
+            </th>
+            <th>
+                Ações
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in aprendizagens_aeej %}
+        <tr>
+            <td>
+                {{item.codigo}}
+            </td>
+            <td>
+                {{item.codigo_aprendizagem}}
+            </td>
+            <td>
+                {{item.codigo_jogo}}
+            </td>
+            <td>
+                {{item.nivel_jogo}}
+            </td>
+            <td>
+                {{item.fase_jogo}}
+            </td>
+            <td>
+                {{item.etapa_jogo}}
+            </td>
+            <td>
+                {{item.codigo_aeej}}
+            </td>
+            <td>
+                {{item.tipo_operacao}}
+            </td>
+            <td>
+                {{item.descritor_operacao}}
+            </td>
+            <td>
+                {{item.valor_padrao}}
+            </td>
+            <td>
+                {% porcentagem item.contribuicao_do_aeej_na_aprendizagem%}
+            </td>
+            <td>
+                <a class="btn btn-warning" href="{% url 'aprendizagens_aeej_alterar' codigo=item.codigo %}">Alterar</a>
+                <a class="btn btn-danger" href="{% url 'aprendizagens_aeej_deletar' codigo=item.codigo %}">Deletar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+</div>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+<h1>Calculo Aprendizagens</h1>
+
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+        <div class="form-group">
+            <label>Selecione o arquivo que deseja carregar</label>
+        </div>
+         {{form}}
+        <div>{{teste}}</div>
+        
+    <button type="submit" class="btn btn-primary btn-sm">Carregar Aprendizagens</button>
+</form>
+
+{% endblock %}

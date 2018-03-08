@@ -1,0 +1,52 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+    
+<h1>Aprendizagens</h1>
+<p style="text-align: left"><a class="btn btn-primary" href="{% url 'aprendizagens_novo' %}">Cadastrar Nova Aprendizagem</a></p>
+<table class="table table-bordered" id="datatable" cellspacing="0" width="100%">
+    <thead>
+    <tr>
+        <th>
+            Código
+        </th>
+        <th>
+            Tipo
+        </th>
+        <th>
+            Título
+        </th>
+        <th>
+            Valor Máximo
+        </th>
+        <th>
+            Ações
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for aprendizagem in aprendizagens %}
+    <tr>
+        <td>
+            {{aprendizagem.codigo}}
+        </td>
+        <td>
+            {{aprendizagem.tipo}}
+        </td>
+        <td>
+            {{aprendizagem.titulo}}
+        </td>
+        <td>
+            {{aprendizagem.valor_maximo}}
+        </td>
+        <td>
+        
+            <a class="btn btn-warning" href="{% url 'aprendizagens_alterar' codigo=aprendizagem.codigo %}">Alterar</a>
+            <a class="btn btn-danger" href="{% url 'aprendizagens_deletar' codigo=aprendizagem.codigo %}">Deletar</a>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

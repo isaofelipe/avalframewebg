@@ -1,0 +1,48 @@
+﻿{% extends "app/layout.html" %}
+{% load tags %}
+{% block content %}
+    
+<h1>Competências x Aprendizagens</h1>
+<p style="text-align: left"><a class="btn btn-primary" href="{% url 'competencias_aprendizagens_novo' %}">Cadastrar Novo Relacionamento Competência Aprendizagem</a></p>
+<table class="table table-bordered" id="datatable" cellspacing="0" width="100%">
+    <thead>
+    <tr>
+        <th>
+            Código
+        </th>
+        <th>
+            Código da Competência
+        </th>
+        <th>
+            Código da Aprendizagem
+        </th>
+        <th>
+            Percentual de Contribuição da Aprendizagem na Competência
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in competencias_aprendizagens %}
+    <tr>
+        <td>
+            {{item.codigo}}
+        </td>
+        <td>
+            {{item.codigo_competencia.codigo}}
+        </td>
+        <td>
+            {{item.codigo_aprendizagem.codigo}}
+        </td>
+        <td>
+            {% porcentagem item.contribuicao_da_aprendizagem_na_competencia %}
+        </td>
+        <td>
+            <a class="btn btn-warning" href="{% url 'competencias_aprendizagens_alterar' codigo=item.codigo %}">Alterar</a>
+            <a class="btn btn-danger" href="{% url 'competencias_aprendizagens_deletar' codigo=item.codigo %}">Deletar</a>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
